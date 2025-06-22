@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.blog-thapa{
+    padding: 20px;
+}
+
+
+section{
+    background-color: rgba(228, 242, 253, 0.462);
+}
+
+.blog-thapa{
+    padding-top: 50px;
+}
+
+.blog-parent{
+    padding:100px 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+ 
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+
+.blog-child{
+ font-weight: bolder;
+   font-size: 10px;
+     padding: 35px;
+        box-shadow: 2px 2px 5px 5px rgba(235, 235, 235, 0.462);
+        &:hover{
+          animation: scale .5s linear ;
+          -webkit-animation: scale .3s linear ;
+}
+}
+
+@keyframes scale {
+    form{
+        transform:scaleX(0);
+        -webkit-transform:scaleX(0);
+        -moz-transform:scaleX(0);
+        -ms-transform:scaleX(0);
+        -o-transform:scaleX(0);
+}
+    to{
+ transform:scaleX(1.1);
+ -webkit-transform:scaleX(1.1);
+ -moz-transform:scaleX(1.1);
+ -ms-transform:scaleX(1.1);
+ -o-transform:scaleX(1.1);
+}
+}
+
+
+footer{
+    margin-top: 50%;
+}
+
+@media  only screen and   (max-width:1000px) {
+    .blog-parent{
+grid-template-columns: repeat(2,1fr);
+    }
+    
+
+
+@media  only screen and   (width<=770px) {
+    .blog-parent{
+grid-template-columns: 1fr;
+    }
+    
+}
+
+footer{
+    margin-top: 80%;
+}
+}
+
+
+@media (width<=800px) {
+
+    .form---1{
+        grid-template-columns: 1fr;
+    
+   }
+
+}

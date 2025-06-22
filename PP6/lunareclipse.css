@@ -1,0 +1,78 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+    margin: auto;
+    background-color: rgb(215, 250, 248);
+    width: 80vw;
+    aspect-ratio: 1;
+    position: relative;
+    animation: sky 15s linear infinite;
+}
+
+.sun {
+    background-color: rgb(246, 255, 0);
+    width: 40vw;
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.sun::before {
+    content: " ";
+    background-color: rgb(3, 2, 0);
+    width: inherit;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    animation: ani 15s ease-in-out infinite;
+}
+
+@keyframes ani {
+    0% {
+        transform: translate(100%) scale(1);
+
+    }
+
+    50% {
+        transform: translate(0%) scale(0.95);
+
+    }
+
+    100% {
+        transform: translate(-100%) scale(0.95);
+
+    }
+}
+
+@keyframes sky {
+    0% {
+        background-color: rgb(215, 250, 248);
+    }
+
+    10% {
+        background-color: rgb(64, 87, 86);
+    }
+
+    50% {
+        background-color: rgb(0, 0, 0);
+
+    }
+
+    100% {
+
+        background-color: rgb(215, 250, 248);
+    }
+
+}

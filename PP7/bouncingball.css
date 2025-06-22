@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.area {
+    background-color: green;
+    width: 80vw;
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+
+    &::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    width: 20vw;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    animation: anix 1s linear infinite alternate ,aniy 10s linear infinite alternate ;
+    -webkit-animation: anix 20s linear infinite alternate ,aniy 2s linear infinite alternate ;
+}
+}
+
+@keyframes anix {
+    
+    from{
+        left: 0;
+    }
+    to{
+        left: 100%;
+    }
+
+   
+}
+
+@keyframes aniy {
+    
+    from{
+        bottom: 0;
+    }
+    to{
+        bottom: 100%;
+    }
+
+}

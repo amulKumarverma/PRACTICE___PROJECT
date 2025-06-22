@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+
+    margin: auto;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 60vh;
+    background-color: burlywood;
+}
+
+.child{
+   
+width: 80vw;
+    height: 60vh;
+    background-color: rgb(176, 224, 146);
+    background-image: url("img/1.jpg");
+   background-size:cover;
+   animation: ani 40s linear infinite;
+
+}
+
+@keyframes ani {
+    0%{
+        background-image: url(img/2.jpg);
+    }
+    10%{
+        background-image: url(img/3.jpg);
+    }
+    20%{
+        background-image: url(img/4.jpg);
+    }
+    30%{
+        background-image: url(img/5.jpg);
+    }
+    40%{
+        background-image: url(img/6.jpg);
+    }
+    50%{
+        background-image: url(img/2.jpg);
+    }
+    60%{
+        background-image: url(img/3.jpg);
+    }
+    70%{
+        background-image: url(img/4.jpg);
+    }
+    80%{
+        background-image: url(img/2.jpg);
+    }
+    90%{
+        background-image: url(img/3.jpg);
+    }
+    100%{
+        background-image: url(img/4.jpg);
+    }
+   
+   
+  
+
+}

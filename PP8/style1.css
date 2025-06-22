@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container---thapa img{
+    width: 50%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+      background-color: #EBF3FE;
+box-shadow: 2px 2px 5px 5px rgba(226, 226, 226, 0.856);
+
+ &:hover{
+     animation: rotation 0.3s linear ;
+       background: linear-gradient(to right, #0575e6, #021b79);
+       -webkit-animation: rotation 0.3s linear ;
+}
+
+@keyframes rotation {
+    0%{ transform:rotate(30deg); -webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg);
+}
+50%{ transform:rotate(180deg); -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg); -ms-transform:rotate(180deg); -o-transform:rotate(180deg);
+}
+100%{ transform:rotate(360deg); -webkit-transform:rotate(360deg); -moz-transform:rotate(360deg); -ms-transform:rotate(360deg); -o-transform:rotate(360deg);
+}
+}
+}
+.container---thapa{
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;   
+
+}
+
+.child---tahapa h3,p{
+    padding: 25px;
+
+}
+
+ .child---tahapa p{
+    color:#000a19d6;
+       font-weight: bold;
+ }
+
+footer{
+    margin-top: 50%;
+}
+
+
+@media (width<=800px) {
+    .container---thapa{
+        grid-template-columns: 1fr;
+    text-align: start;
+    }
+
+    .container---thapa img{
+        width: 25%;
+    }
+footer{
+    margin-top: 100%;
+}
+    .form---1{
+        grid-template-columns: 1fr;
+    
+   }
+
+}
