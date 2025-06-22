@@ -1,0 +1,109 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+ body{
+
+
+  background-color: rgb(45, 13, 84);
+ height: 100vh;
+} 
+
+
+.super-container{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+  height: 100vh;
+}
+
+
+.main{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  gap: 20px;
+  color: bisque;
+  
+}
+
+.child span{
+  text-transform: uppercase;
+  padding: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.btn-main{
+  padding: 20px;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: bisque;
+
+  & input{
+      text-transform: uppercase;
+      cursor: pointer;
+    width: 5rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-style: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+}
+
+#start{
+  background-color: #008000a9;
+    color: rgb(255, 166, 1);
+      &:hover{
+    transition: all 0.2s linear;
+    color: burlywood;
+    box-shadow: 2px 2px 10px 5px  #008000a9;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+}
+
+#stop{
+  background-color: #800000bd;
+    color: rgb(255, 166, 1);
+    &:hover{
+    transition: all 0.2s linear;
+    color: burlywood;
+    box-shadow: 2px 2px 10px 5px #800000bd;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+}
+
+#rest{
+  background-color: #2002ff81;
+  color: rgb(255, 166, 1);
+
+  &:hover{
+    transition: all 0.2s linear;
+    color: #deb887;
+    box-shadow: 2px 2px 10px 5px #2002ff81;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+}
