@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pest Risk Prediction</title>
+  <link rel="stylesheet" href="assets/css/pestrisk.css">
+</head>
+<body>
+  <header>
+    <h1>🪲 Pest Risk Prediction Dashboard</h1>
+  </header>
+
+  <main>
+    <section id="location">
+      <p>Detecting your location...</p>
+    </section>
+
+    <section id="weather">
+      <h2>🌦 Weather Data</h2>
+      <p id="weather-info">Loading...</p>
+    </section>
+
+    <section id="vegetation">
+      <h2>🌿 Vegetation Health (NDVI)</h2>
+      <p id="veg-info">Loading...</p>
+    </section>
+
+    <section id="risk">
+      <h2>⚠️ Pest Risk Alert</h2>
+      <p id="risk-info">Calculating...</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Powered by OpenWeather Agro API</p>
+  </footer>
+
+  <script src="assets/js/pestrisk.js"></script>
+</body>
+</html>

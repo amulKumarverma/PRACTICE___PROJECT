@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agri-Tech Dashboard</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><a href="index.html">🌱Agrii-vision</a></div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="weather.html">Weather</a>
+      <a href="chatbot.html" class="active">🌱 AI Crop Assistant</a>
+      <a href="pestrisk.html">Pestrisk</a>
+      <!-- <a href="dashboard.html">Dashboard</a> -->
+      <!-- <a href="reports.html">Reports</a> -->
+      <a href="login.html" id="logoutLink">Logout</a>
+    </nav>
+  </header>
+
+  <section class="analysis-section">
+    <h2>AI Crop Image Analysis</h2>
+    <p>Upload leaf images to detect diseases and get solutions.</p>
+    <form id="analysisForm">
+      <label for="imageUpload">Select Image:</label>
+      <input type="file" id="imageUpload" accept="image/*" required />
+      <button type="submit" class="btn">Analyze</button>
+    </form>
+
+    <div id="analysisResult" class="result-card" style="display:none;">
+      <h3>Analysis Result</h3>
+      <img id="previewImg" src="" alt="Preview" width="200" />
+      <p><strong>Disease:</strong> <span id="diseaseName"></span></p>
+      <p><strong>Severity:</strong> <span id="severity"></span></p>
+      <p><strong>Solution:</strong> <span id="solution"></span></p>
+      <p><strong>Prevention:</strong> <span id="prevention"></span></p>
+    </div>
+  </section>
+
+  <section class="analysis-section">
+    <h2>AI Soil Image Analysis</h2>
+    <p>Upload soil images to detect conditions (Moisture, Temp, Salinity).</p>
+    <form id="soilForm">
+      <label for="soilImage">Select Soil Image:</label>
+      <input type="file" id="soilImage" accept="image/*" required />
+      <button type="submit" class="btn">Analyze Soil</button>
+    </form>
+
+    <div id="soilResult" class="result-card" style="display:none;">
+      <h3>Soil Analysis Result</h3>
+      <img id="soilPreviewImg" src="" alt="Soil Preview" width="200" />
+      <p><strong>Soil Moisture:</strong> <span id="soilMoistureVal"></span>%</p>
+      <p><strong>Soil Temp:</strong> <span id="soilTempVal"></span>°C</p>
+      <p><strong>Soil Salinity:</strong> <span id="soilSalinityVal"></span> dS/m</p>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card map-card" >
+      <h2>Crop Health Map</h2>
+      <div id="map"></div>
+      <div class="map-legend">
+        <span class="legend healthy"></span> Healthy
+        <span class="legend stressed"></span> Stressed
+        <span class="legend pest"></span> Pest Risk
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Soil Conditions</h2>
+      <div class="metrics">
+        <div class="metric" style="background-color: #ffb997;">
+          <div class="metric-value" id="soil-moist">--%</div>
+          <div class="metric-label">Soil Moisture</div>
+        </div>
+        <div class="metric" style="background-color: #f7ede2;">
+          <div class="metric-value" id="soil-temp">--°C</div>
+          <div class="metric-label">Soil Temp</div>
+        </div>
+        <div class="metric" style="background-color: #f2d388;">
+          <div class="metric-value" id="soil-sal">--</div>
+          <div class="metric-label">Salinity</div>
+        </div>
+      </div>
+
+      <canvas id="soilChart" height="150"></canvas>
+    </div>
+
+    <div class="card">
+      <h2>Spectral Indices</h2>
+      <canvas id="spectralChart" height="150"></canvas>
+    </div>
+
+    <div class="card" id="pred">
+      <h2>AI Predictions</h2>
+      <ul id="ai-predictions" class="pred-list"></ul>
+    </div>
+
+    <div class="card full">
+      <h2>Alerts</h2>
+      <ul id="alerts" class="alerts-list"></ul>
+    </div>
+  </section>
+
+<section class="card full" style="background: linear-gradient(135deg, #457b9d, #1d3557); color:white; text-align:center;">
+  <h2>📑 Generate Report</h2>
+  <p>Download a full AI analysis report including crop health, soil conditions, and AI predictions.</p>
+  <button id="generatePdfBtn" class="btn" style="background:#e63946; padding:12px 25px; border:none; border-radius:25px; font-size:1rem; font-weight:600; cursor:pointer;" disabled>
+    Analyze Crop & Soil to Enable
+  </button>
+</section>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+  
+
+  <script src="assets/js/dashboard.js"></script>
+
+</body>
+</html>

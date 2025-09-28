@@ -1,0 +1,40 @@
+:root{--primary:#2e7d32;--card:#ffffff;--muted:#6b7280}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:#f4f5f7;color:#111}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:var(--primary);color:#fff}
+.topbar nav a{color:#fff;text-decoration:none;margin-left:16px}
+.topbar nav a.active{font-weight:700;}
+.brand{font-weight:700}
+.centered{display:flex;align-items:center;justify-content:center;
+height:100vh;}
+.card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+.login-card{width:320px;text-align:center}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+input[type=text],input[type=password],select{width:100%;padding:10px;margin:8px 0;border:1px solid #e5e7eb;border-radius:6px}
+.btn{display:inline-block;padding:8px 12px;border-radius:6px;border:none;cursor:pointer}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.primary:hover{opacity:.95}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;padding:20px}
+.card.full{grid-column:span 2}
+.map-card{min-height:420px}
+#map{height:320px;border-radius:8px}
+.map-legend{margin-top:8px;font-size:13px}
+.legend{display:inline-block;width:14px;height:12px;margin:0 8px;border-radius:3px;vertical-align:middle}
+.legend.healthy{background:limegreen}
+.legend.stressed{background:gold}
+.legend.pest{background:tomato}
+.metrics{display:flex;gap:12px;margin-bottom:12px}
+.metric{flex:1;background:#f9fafb;padding:10px;border-radius:8px;text-align:center}
+.metric-value{font-size:22px;font-weight:700
+    
+}
+.metric-label{font-size:13px;color:var(--muted)}
+.pred-list{padding-left:12px}
+.alerts-list{list-style:none;padding-left:0}
+.alerts-list li{padding:10px;border-radius:6px;margin-bottom:8px}
+.alert-danger{background:#ffe4e6;color:#7f1d1d}
+.alert-warning{background:#fff7ed;color:#7c2d12}
+.alert-success{background:#ecfdf5;color:#064e3b}
+.container{padding:20px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.card.full{grid-column:span 1}.map-card{order:0}}

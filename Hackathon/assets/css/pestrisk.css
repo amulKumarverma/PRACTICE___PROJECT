@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f7f9;
+  color: #333;
+}
+
+header {
+  background: #2a7f62;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+main {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+section {
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#risk-info.low {
+  color: green;
+  font-weight: bold;
+}
+
+#risk-info.medium {
+  color: orange;
+  font-weight: bold;
+}
+
+#risk-info.high {
+  color: red;
+  font-weight: bold;
+}
+#veg-info {
+  font-weight: bold;
+  color: #2a7f62;
+}

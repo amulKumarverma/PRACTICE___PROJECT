@@ -1,0 +1,210 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+} 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+
+    border-radius: 12px;
+    position: fixed;
+    top: 40px;
+    right: -100%;
+    width: 250px;
+    /* height: calc(100% - 70px); */
+    background: #2e7d32dc;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links li a {
+    color: #fff;
+    font-size: 18px;
+  }
+}
+
+
+.hamburger.toggle span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.toggle span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.toggle span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+.hero-header {
+  height: 100vh;
+  background: linear-gradient(to right, #2e7d32, #66bb6a);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+align-items: center;
+}
+
+.nav-links li a:hover { text-decoration: underline; 
+}
+
+.logo { font-size: 24px; font-weight: 700; }
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-out;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin: 10px 0 20px;
+  transform: translateY(20px);
+  transition: all 1s ease-out;
+}
+
+.hero-btn {
+  background: #fff;
+  color: #2e7d32;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #c8e6c9;
+}
+
+.animate-text { opacity: 0; transform: translateY(20px); }
+.delay-1 { transition-delay: 0.5s; }
+.delay-2 { transition-delay: 1s; }
+
+/* Floating Leaves */
+.hero-animations .leaf {
+  position: absolute;
+  width: 20px; height: 20px;
+  background: #a5d6a7;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 6s ease-in-out infinite;
+}
+
+.leaf-1 { top: 30%; left: 10%; animation-delay: 0s; }
+.leaf-2 { top: 60%; left: 80%; animation-delay: 2s; }
+.leaf-3 { top: 50%; left: 50%; animation-delay: 4s; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(45deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Features Section */
+.features-section {
+  padding: 80px 20px;
+  background: #f4f5f7;
+  text-align: center;
+}
+
+.features-section h2 { font-size: 2rem; margin-bottom: 40px; }
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 250px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.feature-card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.animate-card { opacity: 0; transform: translateY(30px); animation: slideIn 1s forwards; }
+.animate-card.delay-1 { animation-delay: 0.3s; }
+.animate-card.delay-2 { animation-delay: 0.6s; }
+
+@keyframes slideIn { to { opacity:1; transform: translateY(0); } }
+
+/* Contact & Footer */
+.contact-section, .footer { text-align: center; padding: 40px 20px; background: #2e7d32; color: #fff; }
+.footer { font-size: 14px; }

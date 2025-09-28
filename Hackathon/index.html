@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <title>🌱 AI Crop Monitoring</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/home.css" />
+  
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <style>
+    /* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Responsive nav */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .nav-links.nav-active {
+    display: flex;
+  }
+}
+
+/* Leaf animation example */
+.leaf {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('../images/leaf.png') no-repeat center;
+  background-size: contain;
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-20px) rotate(180deg); opacity: 0.7; }
+  100% { transform: translateY(0) rotate(360deg); opacity: 1; }
+}
+
+/* --- Global Styles & Variables --- */
+:root {
+  --primary-color: #2c5e4c; /* A professional green */
+  --secondary-color: #f4f7f6; /* Light gray background */
+  --text-color: #333;
+  --text-light: #777;
+  --border-color: #ddd;
+  --white-color: #fff;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --border-radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1a382d; /* Darker shade of primary */
+}
+
+h2, h3, h4 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+  padding: 60px 0;
+}
+
+.contact-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Form takes more space */
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* --- Contact Form Styling --- */
+.contact-form {
+  background: var(--white-color);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(44, 94, 76, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1a382d;
+  transform: translateY(-2px);
+}
+
+/* --- Contact Info Styling --- */
+.contact-info {
+  background: var(--white-color);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.contact-info h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.contact-info p i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin-right: 15px;
+  width: 20px; /* Aligns text neatly */
+  text-align: center;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: #2c3e50; /* A dark slate blue */
+  color: #ecf0f1; /* Light gray */
+  padding: 40px 0 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.footer-menu, .social-links {
+  margin: 10px 20px;
+}
+
+.footer h4 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: var(--white-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.footer-menu ul {
+  list-style: none;
+}
+
+.footer-menu ul li {
+  margin-bottom: 10px;
+}
+
+.footer-menu ul li a {
+  color: #bdc3c7; /* Lighter gray for links */
+}
+
+.footer-menu ul li a:hover {
+  color: var(--white-color);
+  text-decoration: underline;
+}
+
+.social-links a {
+  color: #ecf0f1;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:last-child {
+  margin-right: 0;
+}
+
+.social-links a:hover {
+  color: #4CAF50; /* A brighter green for hover */
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #3e5062;
+  font-size: 0.9rem;
+  color: #bdc3c7;
+}
+
+.footer-bottom p {
+  margin-bottom: 5px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr; /* Stack columns */
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-menu, .social-links {
+    margin-bottom: 30px;
+  }
+
+  .social-links a {
+    margin: 0 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- 🔝 Header / Navigation -->
+  <header class="hero-header">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="logo">
+      <a href="index.html" aria-label="Agri-Tech homepage">🌱Agrii-vision</a>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <!-- <li><a href="dashboard.html">Dashboard</a></li> -->
+      <!-- <li><a href="reports.html">Reports</a></li> -->
+      <li><a href="login.html" class="btn login-btn">Login</a></li>
+      <li><a href="signup.html" class="btn signup-btn">Signup</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section Content -->
+    <div class="hero-content">
+      <h1 class="animate-text">AI-Powered Crop Monitoring</h1>
+      <p class="animate-text delay-1">Track crop health, soil conditions & pest risks in real-time.</p>
+      <a href="dashboard.html" class="btn hero-btn animate-btn delay-2">Explore Dashboard</a>
+    </div>
+
+    <!-- Leaf Animations -->
+    <div class="hero-animations" aria-hidden="true">
+      <span class="leaf leaf-1"></span>
+      <span class="leaf leaf-2"></span>
+      <span class="leaf leaf-3"></span>
+      <span class="leaf leaf-4"></span>
+    </div>
+  </header>
+
+  <!-- 💡 Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card animate-card">
+          <img src="assets/images/crop.png" alt="Crop Health Icon" />
+          <h3>Crop Health Monitoring</h3>
+          <p>Early detection of crop stress using AI and spectral imaging.</p>
+        </div>
+        <div class="feature-card animate-card delay-1">
+          <img src="assets/images/soil.png" alt="Soil Analysis Icon" />
+          <h3>Soil Analysis</h3>
+          <p>Real-time soil moisture, temperature, and salinity tracking.</p>
+        </div>
+        <div class="feature-card animate-card delay-2">
+          <img src="assets/images/pest.png" alt="Pest Risk Icon" />
+          <h3>Pest Risk Prediction</h3>
+          <p>AI-driven alerts to prevent crop damage and maximize yield.</p>
+        </div>
+
+        <div class="feature-card animate-card">
+          <img src="assets/images/Screenshot 2025-09-21 144704.png" alt="Crop Health Icon" />
+          <h3>Crop Health Map</h3>
+          <p>Live Map Risk Monitoring</p>
+        </div>
+
+                <div class="feature-card animate-card">
+          <img src="assets/images/Screenshot 2025-09-21 145118.png" alt="Crop Health Icon" />
+          <h3>📑 Generate Report</h3>
+          <p>Download a full AI analysis report including crop health, soil conditions, and AI predictions.</p>
+        </div>
+
+        <div class="feature-card animate-card">
+          <img src="assets/images/Screenshot 2025-09-21 145540.png" alt="Crop Health Icon" />
+          <h3>🌤️ Weather</h3>
+          <p>Live Weather Detection</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 📞 Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <form id="contactForm" onsubmit="return validateForm(event)">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" required placeholder="Type your message"></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">Send Message</button>
+          </form>
+          <!-- Custom Alert Box -->
+          <div id="customAlert" style="display:none;position:fixed;bottom:32px;right:32px;z-index:9999;background:#388e3c;color:#fff;padding:22px 38px;border-radius:12px;box-shadow:0 8px 32px rgba(44,94,76,0.18);font-size:1.08rem;min-width:240px;text-align:center;letter-spacing:0.02em;transition:opacity 0.3s;">
+            <i class="fas fa-check-circle" style="color:#fff;font-size:1.4rem;margin-right:8px;vertical-align:middle;"></i>
+            <span id="customAlertMsg" style="vertical-align:middle;"></span>
+          </div>
+        </div>
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p><i class="fas fa-envelope"></i> Email: <a href="mailto:support@cropai.com">support@cropai.com</a></p>
+          <p><i class="fas fa-phone"></i> Phone: <a href="tel:+911234567890">+91 1234567890</a></p>
+          <p><i class="fas fa-map-marker-alt"></i> Address: 123 Agri Street, Tech City, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  function showCustomAlert(msg, color = "#388e3c", icon = "fa-check-circle") {
+    const alertBox = document.getElementById('customAlert');
+    const alertMsg = document.getElementById('customAlertMsg');
+    alertBox.style.background = color;
+    alertMsg.innerHTML = msg;
+    alertBox.querySelector('i').className = `fas ${icon}`;
+    alertBox.style.opacity = 1;
+    alertBox.style.display = 'block';
+    setTimeout(() => {
+      alertBox.style.opacity = 0;
+      setTimeout(() => { alertBox.style.display = 'none'; }, 300);
+    }, 3200);
+  }
+  function validateForm(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    if(name.length < 2) {
+      showCustomAlert('Name must be at least 2 characters long', "#d32f2f", "fa-exclamation-circle");
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRegex.test(email)) {
+      showCustomAlert('Please enter a valid email address', "#d32f2f", "fa-exclamation-circle");
+      return false;
+    }
+    if(message.length < 10) {
+      showCustomAlert('Message must be at least 10 characters long', "#d32f2f", "fa-exclamation-circle");
+      return false;
+    }
+    showCustomAlert('Form submitted successfully!', "#388e3c", "fa-check-circle");
+    document.getElementById('contactForm').reset();
+    return true;
+  }
+  </script>
+  <script>
+    // Dynamic label effect for contact form
+    document.addEventListener("DOMContentLoaded", function() {
+      const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+      inputs.forEach(input => {
+        input.addEventListener('input', function() {
+          if (this.value.trim() !== '') {
+            this.previousElementSibling.classList.add('label-active');
+          } else {
+            this.previousElementSibling.classList.remove('label-active');
+          }
+        });
+      });
+    });
+  </script>
+  <style>
+    /* Dynamic label styles */
+    .contact-form .form-group label {
+      transition: color 0.3s, font-size 0.3s;
+    }
+    .contact-form .form-group label.label-active {
+      color: var(--primary-color);
+      font-size: 1.05rem;
+    }
+    /* Custom Alert Improved Styling */
+    #customAlert {
+      animation: popIn 0.3s;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      80% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @media (max-width: 600px) {
+      #customAlert {
+        right: 12px;
+        bottom: 12px;
+        min-width: 160px;
+        padding: 14px 18px;
+        font-size: 0.98rem;
+      }
+    }
+  </style>
+  <!-- 👣 Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Footer Menu -->
+        <div class="footer-menu">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <!-- Social Links -->
+        <div class="social-links">
+          <h4>Follow Us</h4>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 <strong>CropAI</strong>. All rights reserved.</p>
+        <p>Developed by Team Agri-Vision</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✨ JS Scripts -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Text animations
+      document.querySelectorAll(".animate-text").forEach((el, i) => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        }, i * 400);
+      });
+
+      // Hamburger menu toggle
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("nav-active");
+        const expanded = hamburger.getAttribute("aria-expanded") === "true" || false;
+        hamburger.setAttribute("aria-expanded", !expanded);
+      });
+    });
+  </script>
+
+  <!-- Optional external JS -->
+  <script src="assets/js/home.js" defer></script>
+  <script src="assets/js/dashboard.js" defer></script>
+</body>
+</html>
